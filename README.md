@@ -103,3 +103,19 @@ http://localhost:8085/api/veiculos
 
 http://localhost:8085/swagger
 ```
+
+---
+
+# Sprint Cybersecurity - Incrementos aplicados
+
+- Validacao e sanitizacao de entrada reforcadas em DTOs e camada de servico (formato, tamanho, payload malicioso, normalizacao de parametros).
+- Tratamento seguro de erros com resposta padronizada sem exposicao de stack trace/tecnologia.
+- Autenticacao JWT com expiração e refresh token, com RBAC por perfis: `USER`, `ANALYST`, `ADMIN`.
+- Controle de acesso por endpoint com permissoes separadas para consulta, escrita e exclusao.
+- HTTPS obrigatorio por configuracao, CORS restrito por origem permitida e headers de seguranca adicionados.
+- Rate limiting por IP para reduzir abuso, scraping e DoS basico.
+- Verificacao de integridade de payload para operacoes criticas via assinatura HMAC (`X-Payload-Signature`, `X-Timestamp`).
+- Criptografia de dado sensivel em repouso (campo de especificacao) com AES/GCM.
+- Trilha de auditoria para acoes criticas (auth, create, update, delete, consultas massivas).
+- Politica de retencao com limpeza automatica diaria dos eventos de auditoria antigos.
+- Pseudonimizacao de ator em trilha de auditoria e logs sem dado sensivel.

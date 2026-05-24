@@ -2,6 +2,7 @@ package com.automotiva.ficha_tecnica.entity;
 
 
 
+import com.automotiva.ficha_tecnica.security.SensitiveStringCryptoConverter;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,5 +27,6 @@ public class Especificacao {
     @JoinColumn(name = "atributo_id", nullable = false)
     private Atributo atributo;
 
+    @Convert(converter = SensitiveStringCryptoConverter.class)
     private String valor;
 }
